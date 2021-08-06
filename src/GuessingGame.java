@@ -19,6 +19,7 @@ public class GuessingGame extends JFrame {
 	private JLabel lblDescription;
 	private JButton btnGuess;
 	private JLabel lblOutput;
+	private int count;
 	
 	private int theNumber;
 	
@@ -60,13 +61,14 @@ public class GuessingGame extends JFrame {
 	public void checkGuess() {
         String guessText = txtGuess.getText();
         String message = "";
+        count++;
         int guess = Integer.parseInt(guessText);
         if (guess < theNumber)
             message = guess + " is too low. Try again.";
         else if (guess > theNumber)
             message = guess + " is too high. Try again.";
         else {
-            message = guess + " is correct. You win!";
+            message = guess + " is correct. You win!" + " You tried " + count + " times.";
             newGame();
         }
         lblOutput.setText(message);
